@@ -26,9 +26,6 @@ Daha sonra oluşturduğum javascipt dosyasını aşağıdaki kod ile çalıştı
 ```console
   D:\nuh\node\Patika-NodeJS\odev_1>node app.js 10
 ```
-```console
-D:\nuh\node\Patika-NodeJS\odev_1>node app.js 10
-```
 Aynen benim javascript dosyamda konsola yazdırmak istediğim gibi bir çıktı verdi
 ```console
 D:\nuh\node\Patika-NodeJS\odev_1>node app.js 10
