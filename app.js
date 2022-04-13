@@ -1,8 +1,19 @@
-const arguments = Number( process.argv.slice(2) ); // Konsola girilen 2. kelimeden sonrasını alır. Normalde dizi olarak alır fakat ben tek bir değer gireceğim için diziyi direkt Number metodu ile sayıya çeviriyorum. Birden fazla argümana ihtriycaım olsaydı işe yaramazdı
+// elimde bulunan postlar
+const posts = [{title:'post1', img:'img1'},{title:'post2', img:'img2'}] 
 
-const alanHesapla = (yaricap) =>{ // Bir arrow fonksiyonu kurdum ve yaricap adında bir parametre ekledim
-    const alan = Math.PI * yaricap*yaricap // Math.PI ile gelen sonucu, parametremin karesi ile çarptım ve bunu alan değişkenine aktardım.
-    console.log (`Yarıçapı ${yaricap} olan dairenin alanı: ${alan}'dır`) // Consola yarıcapı ve alanı yazdırdım.
+// Postları listelemek için oluşturduğum fonksiyon 
+const listPost = () =>{
+    posts.map(items => {
+        console.log(`${items.title}  ${items.img}`)
+    })
+    console.log('-----------------')
 }
+listPost();//Postları listele
 
-alanHesapla(arguments); // 1. satırda alığım sonucu argüan olarak kullandım
+// Buda callBack fonksiyonu kulladnım postları ekledikten sonra callback fonksiyonu çağırıyor bu fonksiyonu da addPost parametresi olarak çağırıyor
+const addPost = (postName,postImg,callback) =>{
+    posts.push({title:postName,img:postImg})
+    callback();
+}
+//Yeni post ekle ve postları listele
+addPost('post3','img3',listPost)

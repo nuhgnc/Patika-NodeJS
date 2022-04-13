@@ -1,36 +1,39 @@
 # NodeJS eğitimi, NodeJS nedir dersi 2. ödev
 
-## Node.JS Komut Satırı Kullanımı
-#### Hepimizin Matematik derslerinden bildiği üzere Dairenin Alanı = π x r2 şeklinde hesaplanır. Node.JS Javascript çalışma ortamında yarıçap değerini konsoldan parametre olarak girerek alanı bulmaya çalışacağız. Konsol çıktısı: Yarıçapı (Yarıçap) olan dairenin alanı: (Alan) şeklinde olmalıdır.
+## Post Sıralama ve Post Ekleme
+#### Blog oluşturmaya hazır mısınız? Konsol ekranında postlarımızı sıralayalım, sonrasında yeni bir post oluşturalım ve yeni post ile birlikte postlarımızı tekrar sıralayalım.
 
 
 ```javascript
-const arguments = Number( process.argv.slice(2) ); // Konsola girilen 2. kelimeden sonrasını alır. Normalde dizi olarak alır fakat ben tek bir değer gireceğim için diziyi direkt Number metodu ile sayıya çeviriyorum. Birden fazla argümana ihtriycaım olsaydı işe yaramazdı
+// elimde bulunan postlar
+const posts = [{title:'post1', img:'img1'},{title:'post2', img:'img2'}] 
 
-const alanHesapla = (yaricap) =>{ // Bir arrow fonksiyonu kurdum ve yaricap adında bir parametre ekledim
-    const alan = Math.PI * yaricap*yaricap // Math.PI ile gelen sonucu, parametremin karesi ile çarptım ve bunu alan değişkenine aktardım.
-    console.log (`Yarıçapı ${yaricap} olan dairenin alanı: ${alan}'dır`) // Consola yarıcapı ve alanı yazdırdım.
+// Postları listelemek için oluşturduğum fonksiyon 
+const listPost = () =>{
+    posts.map(items => {
+        console.log(`${items.title}  ${items.img}`)
+    })
+    console.log('-----------------')
 }
+listPost();//Postları listele
 
-alanHesapla(arguments); // 1. satırda alığım sonucu argüan olarak kullandım
+// Buda callBack fonksiyonu kulladnım postları ekledikten sonra callback fonksiyonu çağırıyor bu fonksiyonu da addPost parametresi olarak çağırıyor
+const addPost = (postName,postImg,callback) =>{
+    posts.push({title:postName,img:postImg})
+    callback();
+}
+//Yeni post ekle ve postları listele
+addPost('post3','img3',listPost)
 ```
-#### Terminali alltaki tuş kombinasyonu ile açtım 
+> #### Konsol'da çıkan sonuç 
+
 ```console
- ctrl + shift + "
-```
-Bulunduğum konumun .js dosymın konumu olduğundan emin oldum 
-```console
- D:\nuh\node\Patika-NodeJS\odev_1>
-```
-Daha sonra oluşturduğum javascipt dosyasını aşağıdaki kod ile çalıştırdım
-```console
-  D:\nuh\node\Patika-NodeJS\odev_1>node app.js 10
-```
-```console
-D:\nuh\node\Patika-NodeJS\odev_1>node app.js 10
-```
-Aynen benim javascript dosyamda konsola yazdırmak istediğim gibi bir çıktı verdi
-```console
-D:\nuh\node\Patika-NodeJS\odev_1>node app.js 10
-Yarıçapı 10 olan dairenin alanı: 314.1592653589793'dır
+D:\nuh\node\Patika-NodeJS>node app.js
+post1  img1
+post2  img2
+-----------------
+post1  img1
+post2  img2
+post3  img3
+-----------------
 ```
