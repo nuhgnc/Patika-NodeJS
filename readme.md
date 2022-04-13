@@ -1,39 +1,47 @@
-# NodeJS eğitimi, NodeJS nedir dersi 2. ödev
+# NodeJS eğitimi, NodeJS nedir dersi 3. ödev
 
-## Post Sıralama ve Post Ekleme
-#### Blog oluşturmaya hazır mısınız? Konsol ekranında postlarımızı sıralayalım, sonrasında yeni bir post oluşturalım ve yeni post ile birlikte postlarımızı tekrar sıralayalım.
+## Daire Modüler Dosyası
+- Daire alan : circleArea ve daire çevre : circleCircumference fonksiyonları içeren ve consola sonuçları yazdıran circle.js dosyası oluşturunuz.
+- module.exports yöntemi ile fonksiyonları oluştururken export ediniz.
 
+
+- require ve object destructing kullanarak index.js dosyasında yarıçap (r) 5 olacak şekilde ekran çıktısını alınız.
+
+
+
+
+>circle.js dosyası
 
 ```javascript
-// elimde bulunan postlar
-const posts = [{title:'post1', img:'img1'},{title:'post2', img:'img2'}] 
-
-// Postları listelemek için oluşturduğum fonksiyon 
-const listPost = () =>{
-    posts.map(items => {
-        console.log(`${items.title}  ${items.img}`)
-    })
-    console.log('-----------------')
+//Aldığı parametre ile Alan hesaplaması yapan ve konsola yazdıran fonksiyon
+const circleArea = (number) =>{
+    console.log(Math.PI * number * number)
 }
-listPost();//Postları listele
-
-// Buda callBack fonksiyonu kulladnım postları ekledikten sonra callback fonksiyonu çağırıyor bu fonksiyonu da addPost parametresi olarak çağırıyor
-const addPost = (postName,postImg,callback) =>{
-    posts.push({title:postName,img:postImg})
-    callback();
+//Aldığı parametre ile çevre hesaplaması yapan ve konsola yazdıran fonksiyon
+const circleCircumference = (number) =>{
+    console.log(2 * Math.PI * number)
 }
-//Yeni post ekle ve postları listele
-addPost('post3','img3',listPost)
+
+//Alan ve çevre hesaplaması yapan fonksiyonları dışarı aktarır
+module.exports =  {circleArea, circleCircumference}
 ```
+
+>index.js dosyası
+
+```javascript
+// Diğer modulden dışarı aktardığım alan ve çevre hesaplama fonksiyonlarını require ve object destructing yöntemi ile çektim
+const { circleArea, circleCircumference } = require ('./circle')
+
+// Yukarıda yazdığım komut sayesinde diğer modulde yazdığım fonksiyonu burda çağırabiliyorum
+circleArea(5)
+circleCircumference(5)
+
+```
+
 > #### Konsol'da çıkan sonuç 
 
 ```console
-D:\nuh\node\Patika-NodeJS>node app.js
-post1  img1
-post2  img2
------------------
-post1  img1
-post2  img2
-post3  img3
------------------
+D:\nuh\node\Patika-NodeJS>node index.js
+78.53981633974483
+31.41592653589793
 ```
