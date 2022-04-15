@@ -1,7 +1,7 @@
 # NodeJS eğitimi, NodeJS nedir dersi 4. ödev
 
 ## FS File System Modülü
-###Node.js FS Modülü kullanarak CRUD işlemleri yapacağız.
+### Node.js FS Modülü kullanarak CRUD işlemleri yapacağız.
 - employees.json dosyası oluşturalım ve içerisine {"name": "Employee 1 Name", "salary": 2000} verisini ekleyelim. (CREATE)
 - Bu veriyi okuyalım. (READ)
 - Bu veriyi güncelleyelim.
