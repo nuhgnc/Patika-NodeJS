@@ -7,7 +7,7 @@ Node.js FS Modülü kullanarak CRUD işlemleri yapacağız.
 - Bu veriyi güncelleyelim.
 - Dosyayı silelim.
 
-### 2 FARKLI ÇÖZÜM ÜRETTİM 
+## 2 farklı çözüm ürettim
 - senkron ile her bir fonksiyonuy tek tek çağırdım
 - asenkron tüm fonksiyonları tek bir fonksiyona toplayıp hata olmadan sırası ile çalıştırdım
 
