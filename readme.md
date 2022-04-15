@@ -78,7 +78,7 @@ fs_unlink();
 D:\nuh\node\Patika-NodeJS>node app.js
 Dosya oluştu
 ```
-![alt](https://resimyukle.imageupload.workers.dev/7FnvAGAn_konsol1.png)
+![alt](https://i.ibb.co/SndQXpX/konsol1.png)
 
 ----------
 
