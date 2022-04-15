@@ -45,9 +45,9 @@ const fs_unlink = () => {
 
 
 
-fs_unlink();
-/*
-fs_append('Emloyee 4', 3500);
-fs_read();
 fs_write('Employee 1', 2000);
+/*
+fs_read();
+fs_append('Emloyee 4', 3500);
+fs_unlink();
 */
