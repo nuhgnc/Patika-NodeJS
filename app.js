@@ -1,16 +1,3 @@
-# NodeJS eğitimi, NodeJS nedir dersi 5. ödev
-
-## Kendi Web Sunucumuzu yazalım.
-Kendi bilgisayarımızda aşağıdaki özellikleri kullanarak sunucumuzu yazalım.
-- createServer metodunu kullanacağız.
-- index, hakkimda ve iletisim sayfaları oluşturalım.
-- Sayfalara içerik olarak xxx sayfasına hoşgeldiniz şeklinde h2 başlıkları yazdıralım.
-- port numarası olarak 5000'i kullanalım.
-
-
->app.js içeriği
-
-```javascript
 const http = require ('http'); // Node.js Kütüphanesinden http modulunu projeme dahil ettim
 const port = 5000; // 
 
@@ -40,7 +27,3 @@ const server =  http.createServer((req,res) =>{
 server.listen(port, 'Localhost', () =>{ // oluşturduğu serverı burda başlatıyorum 
     console.log(`server ${port} portunda dinleniyor`)
 })
-
-```
-
-
