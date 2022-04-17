@@ -1,29 +1,27 @@
-const http = require ('http'); // Node.js Kütüphanesinden http modulunu projeme dahil ettim
-const port = 5000; // 
+const Koa = require('koa'); // Koa kütüphanesini projeme dahil ettim
+const Router = require('koa-router'); // Koa router kütüphanesini projeme dahil ettim 
 
-// Server adında değişken oluşturup içine serverin nasıl çalışacağını belirtiyorum
-const server =  http.createServer((req,res) =>{
-    const url = req.url;    // istek urleri url değişkneine aktardım
-    if(url == '/'){ // Eğer istek ana '/' ise aşağıdaki cevabı istemciye gönderir
-        res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
-        res.write('<h2>Anasayfaya hosgeldiniz</h2>','utf-8')
-    }else if (url == '/hakkimda'){  
-        res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
-        res.write('<h2>Hakkimda sayfasına hosgeldiniz</h2>','utf-8');
-    }
-    else if (url == '/iletisim'){
-        res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
-        res.write('<h2>İletisim sayfasına  hosgeldiniz</h2>')
-    }
-    else { // Yukardaki istek haricinde istek gelirse 404 sayfası ile karşılıyorum
-        res.writeHead(404, { "content-type": "text/html; charset=utf-8" });
-        res.write('<h2>404 Not found</h2>');
-    }
-    console.log(url) 
-    res.end(); // Gelen isteğe göre cevabı kullanıcıya yollluyorum. Burası olmaz ise kullanıcı ekranda birşey göremez 
+const app = new Koa(); 
+const router = new Router();
+
+router.get ("/", (ctx) =>{
+  ctx.body = '<h1> İndex sayfasına hoşgeldiniz <h1>'
+})
+
+router.get ("/index", (ctx) =>{
+  ctx.body = '<h1> İndex sayfasına hoşgeldiniz <h1>'
+});
+
+router.get ("/hakkimda", (ctx) =>{
+  ctx.body = '<h1> hakkımda sayfasına hoşgeldiniz <h1>'
+})
+
+router.get ("/iletisim", (ctx) =>{
+  ctx.body = '<h1> iletisim sayfasına hoşgeldiniz <h1>'
 })
 
 
-server.listen(port, 'Localhost', () =>{ // oluşturduğu serverı burda başlatıyorum 
-    console.log(`server ${port} portunda dinleniyor`)
-})
+
+app.use(router.routes()).use(router.allowedMethods());
+app.listen(3000);
+
